@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="overflow:hidden;">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="index.css">
+
+  </head>
+  <body>
+    <div class = container id="container">
+      <div class="background-image" id="background-image"></div>
+      <div class="background-image2" id="background-image2"></div>
+      <div class="dot one" id="dot1"><br></div>
+      <div class="dot two" id="dot2"><br></div>
+      <div class="dot three"id="dot3"><br></div>
+      <div class="dot four"id="dot4"><br></div>
+      <div class="dot five"id="dot5"><br></div>
+      <div class="dot six"id="dot6"><br></div>
+      <div class="dot seven"id="dot7"><br></div>
+      <div class="dot eight"id="dot8"><br></div>
+      <div class="dot nine"id="dot9"><br></div>
+      <div class="dot ten"id="dot10"><br></div>
+      <div class="dot eleven"id="dot11"><br></div>
+      <div class="dot twelve"id="dot12"><br></div>
+      <div class="dot thirteen"id="dot13"><br></div>
+      <div class="dot fourteen"id="dot14"><br></div>
+      <div class="dot fifteen"id="dot15"><br></div>
+      <div class="dot sixteen"id="dot16"><br></div>
+      <div class="dot seventeen"id="dot17"><br></div>
+      <div class="dot eighteen"id="dot18"><br></div>
+      <div class="dot nineteen"id="dot19"><br></div>
+      <div class="dot twenty"id="dot20"><br></div>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  var dots = document.querySelectorAll('.dot');
+  var box = document.getElementById('container');
+  var img1 = document.getElementById('background-image');
+  var img2 = document.getElementById('background-image2');
+  var x = -1
+
+  function onMouseWheel(ev) {/*当鼠标滚轮事件发生时，执行一些操作*/
+      var ev = ev || window.event;
+      var down = true; // 定义一个标志，当滚轮向下滚时，执行一些操作
+      down = ev.wheelDelta ? ev.wheelDelta < 0 : ev.detail > 0;
+      if (down) 
+      { 
+          x = -5200
+          for (var i = 0; i < dots.length; i++) {
+          dots[i].style.transform = "translateX(" + x + "px)"
+          }
+          img1.style.transform = "translateX(" + (-1920) + "px)"
+          img2.style.transform = "translateX(" + 0 + "px)"
+      } 
+      else 
+      {
+          // if (x == 1920) {
+          //     x = 1920
+          //     return
+          // } 
+          // else {
+          //     x = 1920;
+          // }
+          for (var i = 0; i < dots.length; i++) {
+          dots[i].style.transform = "translateX(" + 2400 + "px)"
+          }
+          img1.style.transform = "translateX(" + 0 + "px)"
+          img2.style.transform = "translateX(" + 1920 + "px)"
+
+      }
+      if (ev.preventDefault) 
+        {/*FF 和 Chrome*/
+            ev.preventDefault();// 阻止默认事件
+        }
+      return false;
+  }
+  document.addEventListener('wheel', onMouseWheel);
+  // addEvent(box, 'mousewheel', onMouseWheel);
+  // addEvent(box, 'DOMMouseScroll', onMouseWheel);
+
+
+  function addEvent(obj, xEvent, fn) {
+      if (obj.attachEvent) {
+          obj.attachEvent('on' + xEvent, fn);
+      } else {
+          obj.addEventListener(xEvent, fn, false);
+      }
+  }
+
+  function reEvent(obj,xEvent,fn) {
+        try{
+          obj.removeEventListener(xEvent,fn)
+        }catch(error){
+          ele.detachEvent('on' + xEvent,fn)
+        }
+      }
+  function sleep(d){
+  for(var t = Date.now();Date.now() - t <= d;);
+  }
+</script>
